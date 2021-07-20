@@ -1,0 +1,14 @@
+body,
+.main-content-wrapper {
+    margin: 0 auto;
+}
+
+.main-content-wrapper {
+    padding: 40px;
+}
+
+.card {
+    margin: 20px;
+    padding: 0;
+    width: 40%;
+}

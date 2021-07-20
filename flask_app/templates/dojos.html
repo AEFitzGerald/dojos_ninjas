@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- CSS global styles-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <title>Dojos</title>
+</head>
+<body>
+    <div class="main-content-wrapper">
+        <div class="row">
+            <div class="card">
+                <div class="card-header">
+                    Coding Dojo
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Add New</h5>
+                    <p class="card-text">Dojo Location</p>
+                    <!--form create dojo location -->
+                    <form action="/dojo_create" method= POST>
+                        <label for="name">Name:</label>
+                        <input type="text" name="location_name" placeholder="Enter">
+                        <input type="submit" value="Create">
+                        <input type="hidden" name ='{{dojo_id}}'>
+                    </form>
+                </div>
+            </div>
+
+            <!--view dojo locations/link to dojo rosters/ or click to create new ninja -->
+            <div class="card">
+                <div class="card-body">
+                    <h2>All Dojo Locations</h2>
+                    <ul class="list-unstyled">
+                    {% for dojo in dojos %}
+                        <li><a href="/show_dojo/{{dojo.id}}">{{dojo.location_name}}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div><!--End dojo location card body-->   
+            </div><!--End card container-->
+        </div><!--End div class row-->
+        <div class="row">
+            <div class="card">
+                <div class="card-header">
+                    Ninjas
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Go To Form</h5>
+                    <a href="/ninjas">Add Ninja</a>   
+                </div>
+            </div>
+        </div><!--End div class row-->
+    </div><!--End main-content wrapper-->
+
+</body>
+</html>
